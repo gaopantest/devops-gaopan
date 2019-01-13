@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pingan.devopsgaopan.mapper.RelationRoleOperationMapper" >
+  <resultMap id="BaseResultMap" type="com.pingan.devopsgaopan.entity.RelationRoleOperation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="id_role" property="idRole" jdbcType="INTEGER" />
+    <result column="id_operation" property="idOperation" jdbcType="INTEGER" />
+    <result column="id_resource" property="idResource" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from relation_role_operation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pingan.devopsgaopan.entity.RelationRoleOperation" >
+    insert into relation_role_operation (id, id_role, id_operation, 
+      id_resource)
+    values (#{id,jdbcType=INTEGER}, #{idRole,jdbcType=INTEGER}, #{idOperation,jdbcType=INTEGER}, 
+      #{idResource,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pingan.devopsgaopan.entity.RelationRoleOperation" >
+    update relation_role_operation
+    set id_role = #{idRole,jdbcType=INTEGER},
+      id_operation = #{idOperation,jdbcType=INTEGER},
+      id_resource = #{idResource,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, id_role, id_operation, id_resource
+    from relation_role_operation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, id_role, id_operation, id_resource
+    from relation_role_operation
+  </select>
+</mapper>

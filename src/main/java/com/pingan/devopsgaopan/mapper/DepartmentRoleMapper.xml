@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pingan.devopsgaopan.mapper.DepartmentRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.pingan.devopsgaopan.entity.DepartmentRole" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="department_id" property="departmentId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from department_role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pingan.devopsgaopan.entity.DepartmentRole" >
+    insert into department_role (id, department_id, role_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pingan.devopsgaopan.entity.DepartmentRole" >
+    update department_role
+    set department_id = #{departmentId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, department_id, role_id
+    from department_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, department_id, role_id
+    from department_role
+  </select>
+
+    <select id="selectDeptRoleListByDeptId" resultType="com.pingan.devopsgaopan.entity.DepartmentRole">
+
+    </select>
+</mapper>

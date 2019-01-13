@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pingan.devopsgaopan.mapper.RelationDepartmentResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.pingan.devopsgaopan.entity.RelationDepartmentResource" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="id_department" property="idDepartment" jdbcType="INTEGER" />
+    <result column="id_resource" property="idResource" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from relation_department_resource
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pingan.devopsgaopan.entity.RelationDepartmentResource" >
+    insert into relation_department_resource (id, id_department, id_resource
+      )
+    values (#{id,jdbcType=INTEGER}, #{idDepartment,jdbcType=INTEGER}, #{idResource,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pingan.devopsgaopan.entity.RelationDepartmentResource" >
+    update relation_department_resource
+    set id_department = #{idDepartment,jdbcType=INTEGER},
+      id_resource = #{idResource,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, id_department, id_resource
+    from relation_department_resource
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, id_department, id_resource
+    from relation_department_resource
+  </select>
+</mapper>

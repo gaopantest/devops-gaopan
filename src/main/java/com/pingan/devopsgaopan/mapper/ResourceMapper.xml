@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pingan.devopsgaopan.mapper.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.pingan.devopsgaopan.entity.Resource" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="resource_type_id" property="resourceTypeId" jdbcType="INTEGER" />
+    <result column="resource_location" property="resourceLocation" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from resource
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pingan.devopsgaopan.entity.Resource" >
+    insert into resource (id, `name`, resource_type_id, 
+      resource_location)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{resourceTypeId,jdbcType=INTEGER}, 
+      #{resourceLocation,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pingan.devopsgaopan.entity.Resource" >
+    update resource
+    set `name` = #{name,jdbcType=VARCHAR},
+      resource_type_id = #{resourceTypeId,jdbcType=INTEGER},
+      resource_location = #{resourceLocation,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, `name`, resource_type_id, resource_location
+    from resource
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, `name`, resource_type_id, resource_location
+    from resource
+  </select>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pingan.devopsgaopan.mapper.RelationUserDepartmentRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.pingan.devopsgaopan.entity.RelationUserDepartmentRole" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="department_role_id" property="departmentRoleId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from relation_user_department_role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+
+  <delete id="deleteUserDeptRoleRealByUserIdAndDeptId">
+
+
+
+  </delete>
+
+
+  <insert id="insert" parameterType="com.pingan.devopsgaopan.entity.RelationUserDepartmentRole" >
+    insert into relation_user_department_role (id, user_id, department_role_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{departmentRoleId,jdbcType=INTEGER}
+      )
+  </insert>
+
+  <insert id="addRelationUserDepartmentRoleReal">
+
+
+
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.pingan.devopsgaopan.entity.RelationUserDepartmentRole" >
+    update relation_user_department_role
+    set user_id = #{userId,jdbcType=INTEGER},
+      department_role_id = #{departmentRoleId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, user_id, department_role_id
+    from relation_user_department_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, user_id, department_role_id
+    from relation_user_department_role
+  </select>
+
+    <select id="selectUserDeptRoleByUserId"
+            resultType="com.pingan.devopsgaopan.entity.RelationUserDepartmentRole">
+
+    </select>
+</mapper>
